@@ -1,0 +1,8 @@
+dist/
+src/ygocards.json
+src/cards.cdb
+src/carddb.b64
+cards_compact.json
+c.cdb
+tries/
+__pycache__/

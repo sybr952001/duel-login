@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Duel Login</title>
+<!--INLINE_CSS-->
+</head>
+<body>
+
+<section id="login" class="screen">
+  <form id="login-form" class="panel" autocomplete="off">
+    <h1>Yu-Gi-Oh! Duel Puzzles</h1>
+    <p class="sub" id="login-sub">Clear a puzzle to unlock</p>
+    <p id="gate-done" class="note ok" hidden></p>
+    <div id="gate-open" hidden>
+      <input id="pw" type="password" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit" id="login-go">Enter</button>
+      <p id="login-err" class="err" hidden></p>
+    </div>
+    <p id="gate-locked" class="note">The password field stays hidden until you clear a puzzle. Solve one on the board to reveal it.</p>
+    <p class="note">
+      This gate runs entirely in your browser. It stops the app being used by accident;
+      it is <strong>not</strong> real authentication &mdash; anyone holding this file can
+      read the code and unlock it.
+    </p>
+    <p id="load-state" class="note">Loading card database&hellip;</p>
+  </form>
+</section>
+
+<section id="game" class="screen" hidden>
+  <header>
+    <div>
+      <h2 id="p-title">Puzzle</h2>
+      <p id="p-goal" class="goal"></p>
+    </div>
+    <div class="tools">
+      <select id="puzzle-pick" title="Choose a puzzle"></select>
+      <button id="btn-restart" class="ghost">Restart</button>
+      <button id="btn-hint" class="ghost">Hint</button>
+      <button id="btn-lock" class="ghost">Lock</button>
+    </div>
+  </header>
+
+  <p id="gate-note" class="note gate" hidden>Clear a puzzle to reveal the password field.</p>
+
+  <p id="p-brief" class="brief"></p>
+
+  <main>
+    <div class="side" id="side-foe">
+      <div class="pinfo">
+        <span class="pname"></span>
+        <span class="turnflag"></span>
+        <span class="lp"></span>
+        <button class="pile deck" title="Opponent deck"></button>
+        <button class="pile gy" title="Opponent Graveyard"></button>
+      </div>
+      <div class="hand foe"></div>
+      <div class="row spells"></div>
+      <div class="row monsters"></div>
+    </div>
+
+    <div class="mid">
+      <div id="chain" class="chain"></div>
+      <div id="prompt" class="prompt"><p class="hint-text">Starting&hellip;</p></div>
+    </div>
+
+    <div class="side" id="side-me">
+      <div class="row monsters"></div>
+      <div class="row spells"></div>
+      <div class="hand me"></div>
+      <div class="pinfo">
+        <span class="pname"></span>
+        <span class="turnflag"></span>
+        <span class="lp"></span>
+        <button class="pile deck" title="Your deck"></button>
+        <button class="pile gy" title="Your Graveyard"></button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div id="log" class="log"></div>
+    <p id="coverage" class="note"></p>
+  </footer>
+
+  <div id="overlay" class="overlay" hidden>
+    <div class="panel">
+      <h3 id="ov-title"></h3>
+      <p id="ov-text"></p>
+      <div class="ovbtns">
+        <button id="ov-retry">Try again</button>
+        <button id="ov-next" class="ghost">Next puzzle</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--INLINE_JS-->
+</body>
+</html>
